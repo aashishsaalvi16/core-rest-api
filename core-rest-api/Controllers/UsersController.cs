@@ -19,12 +19,28 @@ namespace core_rest_api.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        [Route("[action]")]
-        [Route("api/Users/GetAllUsers")]
+        [HttpGet("GetAllUsers")]
+        //[Route("[action]")]
+        //[Route("api/Users/GetAllUsers")]
         public async Task<IEnumerable<ApplicationUser>> GetAllUsers()
         {
             return await _userService.GetAllUsers();
+        }
+
+        [HttpGet("GetUserById/{id}")]
+        //[Route("[action]")]
+        //[Route("api/Users/GetUserById")]
+        public async Task<ApplicationUser> GetUserById(string id)
+        {
+            return await _userService.GetUserById(id);
+        }
+
+        [HttpGet("GetUserByEmail/{email}")]
+        //[Route("[action]")]
+        //[Route("api/Users/GetUserByEmail")]
+        public async Task<ApplicationUser> GetUserByEmail(string email)
+        {
+            return await _userService.GetUserByEmail(email);
         }
     }
 }
